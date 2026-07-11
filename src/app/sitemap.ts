@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/content/site";
-import { insuranceProducts } from "@/content/insurance";
+import { products } from "@/content/insurance";
 import { professions } from "@/content/professions";
 import { knowledgeArticles } from "@/content/knowledge";
 
@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "" ? 1 : 0.8,
   }));
 
-  insuranceProducts
+  products
     .filter((p) => p.hasProductPage)
     .forEach((product) => {
       routes.push({

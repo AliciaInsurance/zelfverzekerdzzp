@@ -7,7 +7,7 @@ import { FAQ } from "@/components/FAQ";
 import { Hero } from "@/components/Hero";
 import { JsonLd } from "@/components/JsonLd";
 import { Section } from "@/components/Section";
-import { insuranceProducts } from "@/content/insurance";
+import { products } from "@/content/insurance";
 import type { Profession } from "@/content/professions";
 import { siteConfig } from "@/content/site";
 import { breadcrumbJsonLd, faqPageJsonLd } from "@/lib/json-ld";
@@ -25,8 +25,8 @@ export function ProfessionPageTemplate({
     { label: profession.name },
   ];
 
-  const recommendedProducts = insuranceProducts.filter((p) =>
-    profession.recommendedInsurance.includes(p.shortName),
+  const recommendedProducts = products.filter((p) =>
+    profession.recommendedInsurance.includes(p.shortTitle),
   );
 
   const jsonLdData = [
@@ -87,9 +87,9 @@ export function ProfessionPageTemplate({
                 <Shield className="h-4 w-4 text-blue" aria-hidden />
               </div>
               <h3 className="mb-1 font-semibold text-navy group-hover:text-blue">
-                {product.shortName}
+                {product.shortTitle}
               </h3>
-              <p className="text-sm text-muted">{product.description}</p>
+              <p className="text-sm text-muted">{product.shortDescription}</p>
             </Link>
           ))}
         </div>

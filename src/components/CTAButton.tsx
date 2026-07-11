@@ -39,7 +39,7 @@ export function CTAButton({
 
   return (
     <Button asChild variant={variant} size={size} className={cn(className)} {...props}>
-      <a href={url}>
+      <a href={url} target="_blank" rel="noopener noreferrer">
         {children}
         {showArrow && <ArrowRight className="h-4 w-4" />}
       </a>

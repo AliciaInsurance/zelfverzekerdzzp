@@ -4,14 +4,14 @@ import { CTAButton } from "@/components/CTAButton";
 import { Container } from "@/components/Container";
 import { FAQ } from "@/components/FAQ";
 import { FeatureGrid } from "@/components/FeatureGrid";
-import { InsuranceCard } from "@/components/InsuranceCard";
+import { ProductCard } from "@/components/ProductCard";
 import { JsonLd } from "@/components/JsonLd";
 import { PackagePreview } from "@/components/PackagePreview";
 import { ProfessionCard } from "@/components/ProfessionCard";
 import { Section } from "@/components/Section";
 import { TrustBar } from "@/components/TrustBar";
 import { homepageFAQ } from "@/content/faq";
-import { insuranceProducts } from "@/content/insurance";
+import { getFeaturedProducts } from "@/content/insurance";
 import { professions } from "@/content/professions";
 import { siteConfig } from "@/content/site";
 import { faqPageJsonLd } from "@/lib/json-ld";
@@ -24,6 +24,8 @@ export const metadata = createPageMetadata({
 });
 
 export default function HomePage() {
+  const featuredProducts = getFeaturedProducts();
+
   return (
     <>
       <JsonLd data={faqPageJsonLd(homepageFAQ)} />
@@ -100,8 +102,8 @@ export default function HomePage() {
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {insuranceProducts.map((product) => (
-            <InsuranceCard key={product.slug} product={product} />
+          {featuredProducts.map((product) => (
+            <ProductCard key={product.slug} product={product} />
           ))}
         </div>
       </Section>

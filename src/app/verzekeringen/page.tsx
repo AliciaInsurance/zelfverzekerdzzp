@@ -3,21 +3,19 @@ import { ArrowRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTAButton } from "@/components/CTAButton";
 import { Hero } from "@/components/Hero";
-import { InsuranceCard } from "@/components/InsuranceCard";
+import { ProductCatalog } from "@/components/ProductCatalog";
 import { Section } from "@/components/Section";
-import { getInsurancePages } from "@/content/insurance";
+import { productCategories, products } from "@/content/insurance";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
   title: "Zakelijke verzekeringen voor zzp'ers",
   description:
-    "Overzicht van zakelijke verzekeringen voor zzp'ers: AVB, BAV, cyberverzekering en meer. Heldere uitleg en digitaal afsluiten.",
+    "Volledig overzicht van zakelijke verzekeringen voor zzp'ers: aansprakelijkheid, inkomen, cyber, bedrijfsmiddelen en reizen.",
   path: "/verzekeringen",
 });
 
 export default function VerzekeringenPage() {
-  const products = getInsurancePages();
-
   return (
     <>
       <Hero
@@ -34,12 +32,26 @@ export default function VerzekeringenPage() {
             { label: "Verzekeringen" },
           ]}
         />
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
-            <InsuranceCard key={product.slug} product={product} />
-          ))}
+
+        <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {productCategories.map((category) => {
+            const count = products.filter((p) => p.category === category.slug).length;
+            return (
+              <div
+                key={category.slug}
+                className="rounded-xl border border-navy/10 bg-soft-bg p-5"
+              >
+                <h2 className="mb-1 font-semibold text-navy">{category.title}</h2>
+                <p className="mb-2 text-sm text-muted">{category.description}</p>
+                <p className="text-xs text-muted">{count} producten</p>
+              </div>
+            );
+          })}
         </div>
-        <p className="mt-8 text-sm text-muted">
+
+        <ProductCatalog products={products} />
+
+        <p className="mt-10 text-sm text-muted">
           Op zoek naar verzekeringen op basis van je beroep?{" "}
           <Link
             href="/beroepen"

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const packageItems = [
   { label: "AVB", color: "bg-blue/10 text-blue" },
   { label: "BAV", color: "bg-aqua/10 text-aqua" },
-  { label: "Cyber", color: "bg-navy/10 text-navy" },
+  { label: "Rechtsbijstand", color: "bg-navy/10 text-navy" },
 ];
 
 export function PackagePreview() {
@@ -43,7 +43,7 @@ export function PackagePreview() {
 
         <Button asChild variant="secondary" className="w-full">
           <Link href="/beroepen">
-            Bekijk advies
+            Bekijk
             <ArrowRight className="h-4 w-4" />
           </Link>
         </Button>
