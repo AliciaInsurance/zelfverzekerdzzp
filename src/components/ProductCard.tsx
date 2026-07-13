@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Shield } from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
-import { ProductStatusBadge } from "@/components/ProductStatusBadge";
 import type { Product } from "@/content/insurance";
 
 type ProductCardProps = {
@@ -11,16 +10,11 @@ type ProductCardProps = {
 
 export function ProductCard({ product, showCta = true }: ProductCardProps) {
   const canLinkToPage = product.hasProductPage;
-  const showExternalCta =
-    showCta && product.status !== "coming-soon";
 
   return (
     <article className="flex h-full flex-col rounded-xl border border-navy/10 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-      <div className="mb-4 flex items-start justify-between gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-blue/10 to-aqua/10">
-          <Shield className="h-5 w-5 text-blue" aria-hidden />
-        </div>
-        <ProductStatusBadge status={product.status} />
+      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue/10 to-aqua/10">
+        <Shield className="h-5 w-5 text-blue" aria-hidden />
       </div>
 
       <h3 className="mb-2 text-lg font-semibold text-navy">
@@ -57,7 +51,7 @@ export function ProductCard({ product, showCta = true }: ProductCardProps) {
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         )}
-        {showExternalCta && (
+        {showCta && (
           <CTAButton
             campaign={product.directUrlCampaign}
             variant="outline"
@@ -65,11 +59,8 @@ export function ProductCard({ product, showCta = true }: ProductCardProps) {
             showArrow={false}
             className="ml-auto"
           >
-            {product.ctaLabel}
+            Bereken premie
           </CTAButton>
-        )}
-        {product.status === "coming-soon" && (
-          <span className="ml-auto text-xs text-muted">Binnenkort beschikbaar</span>
         )}
       </div>
     </article>

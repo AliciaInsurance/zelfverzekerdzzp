@@ -6,7 +6,6 @@ import { DisclaimerBlock } from "@/components/DisclaimerBlock";
 import { FAQ } from "@/components/FAQ";
 import { Hero } from "@/components/Hero";
 import { JsonLd } from "@/components/JsonLd";
-import { ProductStatusBadge } from "@/components/ProductStatusBadge";
 import { Section } from "@/components/Section";
 import type { Product } from "@/content/insurance";
 import { siteConfig } from "@/content/site";
@@ -42,24 +41,14 @@ export function InsurancePageTemplate({ product }: InsurancePageTemplateProps) {
     ...(product.faq.length > 0 ? [faqPageJsonLd(product.faq)] : []),
   ];
 
-  const showCta = product.status !== "coming-soon";
-
   return (
     <>
       <JsonLd data={jsonLdData} />
 
       <Hero title={product.title} subtitle={product.subtitle}>
-        {showCta && (
-          <div className="flex flex-wrap items-center gap-4">
-            <CTAButton
-              campaign={product.directUrlCampaign}
-              content="hero"
-            >
-              {product.ctaLabel}
-            </CTAButton>
-            <ProductStatusBadge status={product.status} />
-          </div>
-        )}
+        <CTAButton campaign={product.directUrlCampaign} content="hero">
+          Bereken premie
+        </CTAButton>
       </Hero>
 
       <Section background="white">
@@ -185,25 +174,23 @@ export function InsurancePageTemplate({ product }: InsurancePageTemplateProps) {
         </Section>
       )}
 
-      {showCta && (
-        <Section background="navy">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-2xl font-semibold md:text-3xl">
-              {product.ctaLabel} voor {product.shortTitle}
-            </h2>
-            <p className="mb-8 text-white/70">
-              Vind binnen enkele minuten de verzekering die past bij jouw
-              situatie als zzp&apos;er.
-            </p>
-            <CTAButton
-              campaign={product.directUrlCampaign}
-              content="bottom-cta"
-            >
-              {product.ctaLabel}
-            </CTAButton>
-          </div>
-        </Section>
-      )}
+      <Section background="navy">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="mb-4 text-2xl font-semibold md:text-3xl">
+            Bereken je premie voor {product.shortTitle}
+          </h2>
+          <p className="mb-8 text-white/70">
+            Vind binnen enkele minuten de verzekering die past bij jouw
+            situatie als zzp&apos;er.
+          </p>
+          <CTAButton
+            campaign={product.directUrlCampaign}
+            content="bottom-cta"
+          >
+            Bereken premie
+          </CTAButton>
+        </div>
+      </Section>
 
       <Section background="white" className="py-8">
         <DisclaimerBlock />

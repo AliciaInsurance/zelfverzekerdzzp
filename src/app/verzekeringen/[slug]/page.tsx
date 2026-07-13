@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: PageProps) {
     ongevallen: "Ongevallenverzekering voor zzp'ers",
     "zakelijke-spullen": "Verzekering zakelijke spullen voor zzp'ers",
     "zakelijke-reis": "Zakelijke reisverzekering voor zzp'ers",
+    orv: "Overlijdensrisicoverzekering voor zzp'ers",
   };
 
   return createPageMetadata({
