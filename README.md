@@ -4,11 +4,23 @@ Moderne MVP-website voor zakelijke verzekeringen voor zzp'ers. Marketing- en SEO
 
 **Belofte:** Slim verzekerd ondernemen. Zonder gedoe.
 
+## Documentatie
+
+Lees deze bestanden voordat je aan het project werkt (ook relevant voor Cursor Agents):
+
+| Document | Inhoud |
+|---|---|
+| [AGENTS.md](./AGENTS.md) | Instructies voor AI-agents die aan dit project werken |
+| [docs/PROJECT_CONTEXT.md](./docs/PROJECT_CONTEXT.md) | Architectuur, routes, stack, deployment |
+| [docs/DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md) | Kleuren, typografie, componentpatronen |
+| [docs/CONTENT_RULES.md](./docs/CONTENT_RULES.md) | Tone of voice, SEO, juridische regels |
+| [docs/ROADMAP.md](./docs/ROADMAP.md) | Status, TODO's, vervolgstappen |
+
 ## Tech stack
 
-- Next.js (App Router)
+- Next.js 16 (App Router)
 - TypeScript
-- Tailwind CSS
+- Tailwind CSS v4
 - shadcn/ui (Button, Accordion, Sheet)
 - lucide-react
 
@@ -24,40 +36,33 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Productiebuild testen
 
 ```bash
+npm run lint
 npm run build
 npm run start
 ```
 
-## GitHub-publicatie
+## GitHub
+
+Repository: https://github.com/AliciaInsurance/zelfverzekerdzzp
 
 ```bash
-git init
-git add .
-git commit -m "Initial ZelfverzekerdZZP MVP"
-git branch -M main
-git remote add origin <GITHUB_REPOSITORY_URL>
-git push -u origin main
+git clone https://github.com/AliciaInsurance/zelfverzekerdzzp.git
+cd zelfverzekerdzzp
+npm install
+npm run dev
 ```
 
 ## Deployen naar Vercel
 
-1. Maak een GitHub-repository aan.
-2. Push het project naar GitHub (zie hierboven).
-3. Log in bij [Vercel](https://vercel.com).
-4. Kies **Add New Project**.
-5. Importeer de GitHub-repository.
-6. Controleer dat Vercel Next.js herkent (geen extra build-configuratie nodig).
-7. Voeg indien nodig toe:
+1. Project is gekoppeld aan de GitHub-repository.
+2. Elke push naar `main` activeert automatisch een deployment.
+3. Environment variable (optioneel):
 
    ```text
    NEXT_PUBLIC_SITE_URL=https://zelfverzekerdzzp.nl
    ```
 
-8. Klik op **Deploy**.
-9. Voeg daarna `zelfverzekerdzzp.nl` als custom domain toe.
-10. Pas de DNS-records aan volgens de instructies van Vercel.
-
-Elke push naar de `main`-branch activeert automatisch een nieuwe productiedeployment.
+4. Custom domain: `zelfverzekerdzzp.nl` (DNS via Vercel).
 
 ## Projectstructuur
 
@@ -67,6 +72,7 @@ src/
   components/       # Herbruikbare UI-componenten
   content/          # Hardcoded content (verzekeringen, beroepen, FAQ)
   lib/              # Utilities (metadata, UTM-links, JSON-LD)
+docs/               # Projectdocumentatie
 public/             # Statische assets
 ```
 
@@ -78,21 +84,31 @@ public/             # Statische assets
 
 ## Pagina's
 
+### Marketing
 - `/` — Homepage
-- `/verzekeringen` — Overzicht verzekeringen
-- `/verzekeringen/avb` — AVB
-- `/verzekeringen/beroepsaansprakelijkheid` — BAV
-- `/verzekeringen/cyber` — Cyber
-- `/beroepen` — Overzicht beroepen
-- `/beroepen/consultant` — Consultant
-- `/beroepen/it-specialist` — IT-specialist
-- `/beroepen/accountant` — Accountant
-- `/beroepen/projectmanager` — Projectmanager
-- `/kennisbank` — Kennisbankoverzicht
-- `/kennisbank/avb-of-bav` — Artikel AVB vs BAV
 - `/over-ons` — Over ons
 - `/disclaimer` — Disclaimer
 - `/privacy` — Privacy
+
+### Producten (9)
+- `/verzekeringen` — Catalogus met filters
+- `/verzekeringen/avb` — AVB
+- `/verzekeringen/beroepsaansprakelijkheid` — BAV
+- `/verzekeringen/cyber` — Cyber
+- `/verzekeringen/aov` — AOV
+- `/verzekeringen/rechtsbijstand` — Rechtsbijstand
+- `/verzekeringen/ongevallen` — Ongevallen
+- `/verzekeringen/zakelijke-spullen` — Zakelijke spullen
+- `/verzekeringen/zakelijke-reis` — Zakelijke reisverzekering
+- `/verzekeringen/orv` — ORV
+
+### Beroepen (4)
+- `/beroepen` — Overzicht
+- `/beroepen/consultant`, `/it-specialist`, `/accountant`, `/projectmanager`
+
+### Kennisbank
+- `/kennisbank` — Overzicht
+- `/kennisbank/avb-of-bav` — AVB vs BAV
 
 ## Licentie
 
