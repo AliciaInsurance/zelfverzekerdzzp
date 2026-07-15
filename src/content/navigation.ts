@@ -1,5 +1,6 @@
 export const mainNav = [
   { label: "Verzekeringen", href: "/verzekeringen" },
+  { label: "Premie berekenen", href: "/premie-berekenen" },
   { label: "Beroepen", href: "/beroepen" },
   { label: "Kennisbank", href: "/kennisbank" },
   { label: "Over ons", href: "/over-ons" },

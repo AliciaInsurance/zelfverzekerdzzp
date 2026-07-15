@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     "",
     "/verzekeringen",
+    "/premie-berekenen",
     "/beroepen",
     "/kennisbank",
     "/over-ons",

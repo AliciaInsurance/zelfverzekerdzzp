@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { AdviceDemo } from "@/components/AdviceDemo";
 import { CTAButton } from "@/components/CTAButton";
 import { Container } from "@/components/Container";
 import { FAQ } from "@/components/FAQ";
@@ -9,6 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { PackagePreview } from "@/components/PackagePreview";
 import { ProfessionCard } from "@/components/ProfessionCard";
 import { Section } from "@/components/Section";
+import { SitePremiumCalculator } from "@/components/SitePremiumCalculator";
 import { TrustBar } from "@/components/TrustBar";
 import { homepageFAQ } from "@/content/faq";
 import { getFeaturedProducts } from "@/content/insurance";
@@ -108,19 +108,25 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Adviesmodule demo */}
-      <Section background="white" id="advies">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <h2 className="mb-4 text-2xl font-semibold text-navy md:text-3xl">
-              Welke verzekering past bij jou?
-            </h2>
-            <p className="text-muted leading-relaxed">
-              Vul je gegevens in en krijg een eerste indicatie van verzekeringen
-              die relevant kunnen zijn voor jouw situatie.
-            </p>
-          </div>
-          <AdviceDemo />
+      {/* Premiecalculator */}
+      <Section background="white" id="premie">
+        <div className="mb-10 text-center md:text-left">
+          <h2 className="mb-3 text-2xl font-semibold text-navy md:text-3xl">
+            Bereken je indicatieve premie
+          </h2>
+          <p className="text-muted">
+            Zoek je beroep en bekijk direct beschikbare verzekeringen met een
+            indicatieve maandpremie.
+          </p>
+        </div>
+        <SitePremiumCalculator ctaContent="homepage-premium-calculator" />
+        <div className="mt-6 text-center md:text-left">
+          <Link
+            href="/premie-berekenen"
+            className="text-sm font-medium text-blue hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue rounded-sm"
+          >
+            Open volledige premiecalculator →
+          </Link>
         </div>
       </Section>
 

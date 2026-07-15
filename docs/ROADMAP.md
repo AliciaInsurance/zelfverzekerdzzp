@@ -13,7 +13,8 @@
 
 ### Pagina's
 
-- [x] Homepage (hero, trust bar, beroepen, featured producten, adviesdemo, FAQ, CTA)
+- [x] Homepage (hero, trust bar, beroepen, featured producten, premiecalculator, FAQ, CTA)
+- [x] Premiecalculator (`/premie-berekenen` + homepage) op basis van `pricing.csv`
 - [x] Productcatalogus `/verzekeringen` met categorieblokken + filters
 - [x] 9 productpagina's (dynamische `[slug]`-route)
 - [x] 4 beroepspagina's + overzicht
@@ -46,7 +47,7 @@
 
 ### Functioneel
 
-- [ ] Adviesdemo heeft geen echte advieslogica (bewust demo-state)
+- [x] Premiecalculator met echte prijsdata (AdviceDemo vervangen)
 - [ ] Geen analytics (Plausible/GA4) geïmplementeerd
 - [ ] Geen cookie consent banner
 - [ ] Geen Open Graph-afbeeldingen per pagina
@@ -100,7 +101,7 @@
 
 - Adviesdemo koppelen aan echte productlogica (indien gewenst)
 - Exit-intent of sticky CTA op mobile
-- Premie-indicatie widget (zonder prijs)
+- Premiecalculator doorontwikkelen (funnel-deep links, meer sites hergebruik)
 - Trust signals valideren (alleen echte data)
 
 ## Lange termijn

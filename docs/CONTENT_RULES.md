@@ -36,7 +36,7 @@
 
 - Formuleer dekkingen als **"doorgaans wel/niet verzekerd"** — geen garanties.
 - Voeg toe: *"De polisvoorwaarden zijn leidend"* waar passend.
-- Geen specifieke **prijzen**, **limieten** (€-bedragen) of **eigen risico's** tenzij inhoudelijk gevalideerd door Alicia.
+- Geen specifieke **prijzen**, **limieten** (€-bedragen) of **eigen risico's** tenzij via de premiecalculator (gevalideerde `pricing.csv`) of inhoudelijk gevalideerd door Alicia.
 - Geen **verzekeraarsnamen** of **polisnummers** verzinnen.
 - Praktijkvoorbeelden: realistisch, kort, geen extreme scenario's.
 
@@ -113,7 +113,7 @@ De site biedt **geen persoonlijk verzekeringsadvies**. De adviesdemo op de homep
 
 | Categorie | Regel |
 |---|---|
-| Prijzen | Geen premiebedragen, "vanaf € X", kortingen |
+| Prijzen | Geen premiebedragen buiten de premiecalculator. De calculator toont alleen indicatieve maandpremies uit `pricing.csv`, altijd met disclaimer. |
 | Dekkingen | Geen specifieke limieten zonder validatie |
 | Garanties | Geen "100% gedekt", "volledige bescherming" |
 | Klantenaantallen | Geen "X zzp'ers verzekerd", tevredenheidspercentages |

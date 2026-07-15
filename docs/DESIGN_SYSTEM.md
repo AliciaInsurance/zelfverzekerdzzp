@@ -141,7 +141,7 @@ Alternerend patroon op pagina's:
 - Klassieke verzekerings-template look
 - WordPress-achtige layouts
 - Fictieve klantreviews of keurmerken
-- Concrete prijzen of limieten op de site
+- Concrete prijzen of limieten buiten de premiecalculator (calculator gebruikt gevalideerde `pricing.csv`)
 - Het woord "advies" in CTA's
 - Donkere mode (niet geïmplementeerd)
 
