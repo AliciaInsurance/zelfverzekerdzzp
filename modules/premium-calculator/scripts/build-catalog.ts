@@ -7,7 +7,7 @@
  * An invalid CSV fails the process with a clear error (exit code 1).
  */
 
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -20,6 +20,20 @@ const csvPath = join(moduleRoot, "pricing", "pricing.csv");
 const outPath = join(moduleRoot, "generated", "catalog.json");
 
 function main() {
+  if (!existsSync(csvPath)) {
+    console.error(
+      [
+        `pricing.csv niet gevonden op: ${csvPath}`,
+        "",
+        "Plaats het bestandsprecis hier:",
+        "  modules/premium-calculator/pricing/pricing.csv",
+        "",
+        "Niet in de map erboven (modules/premium-calculator/pricing.csv).",
+      ].join("\n"),
+    );
+    process.exit(1);
+  }
+
   const content = readFileSync(csvPath, "utf8");
   const result = validatePricingCsv(content);
 
@@ -30,7 +44,8 @@ function main() {
 
   const catalog = buildCatalog(result.rules);
 
-  // Drop riskclassName from client payload — internal only
+  // Strip riskclassName from browser payload. Keep internalName for other
+  // Alicia consumers that share this catalog; ZZ UI ignores it.
   const clientCatalog = {
     professions: catalog.professions,
     productNames: catalog.productNames,
@@ -47,6 +62,7 @@ function main() {
             percentageAdjustment,
             fixedAdjustment,
             insuranceTaxPercentage,
+            internalName,
           }) => ({
             professionRiskclassId,
             professionId,
@@ -57,6 +73,7 @@ function main() {
             fixedAdjustment,
             insuranceTaxPercentage,
             riskclassName: "",
+            internalName,
           }),
         ),
       ]),

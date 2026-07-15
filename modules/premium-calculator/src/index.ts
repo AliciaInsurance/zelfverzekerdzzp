@@ -10,6 +10,7 @@ export type {
 } from "./types";
 
 export {
+  OPTIONAL_COLUMNS,
   parseDutchNumber,
   parsePricingCsv,
   REQUIRED_COLUMNS,
