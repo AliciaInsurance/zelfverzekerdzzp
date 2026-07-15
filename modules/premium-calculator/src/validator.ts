@@ -160,6 +160,7 @@ export function validatePricingCsv(content: string): ValidationResult {
       fixedAdjustment,
       insuranceTaxPercentage,
       riskclassName: raw.riskclass_name,
+      internalName: raw.internal_name,
     });
   }
 
