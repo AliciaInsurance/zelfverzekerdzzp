@@ -9,6 +9,11 @@ export type PriceRule = {
   fixedAdjustment: number;
   insuranceTaxPercentage: number;
   riskclassName: string;
+  /**
+   * Optional product key for other Alicia D2C sites / funnel deep-links.
+   * Not shown in the zelfverzekerdzzp.nl calculator UI.
+   */
+  internalName: string;
 };
 
 export type Profession = {
