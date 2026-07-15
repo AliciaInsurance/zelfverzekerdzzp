@@ -15,7 +15,14 @@ export const REQUIRED_COLUMNS = [
   "riskclass_name",
 ] as const;
 
+/**
+ * Optional columns used by other Alicia D2C consumers.
+ * Presence is not required for zelfverzekerdzzp.nl.
+ */
+export const OPTIONAL_COLUMNS = ["internal_name"] as const;
+
 export type RawPricingRow = Record<(typeof REQUIRED_COLUMNS)[number], string> & {
+  internal_name: string;
   __rowNumber: number;
 };
 
@@ -138,8 +145,11 @@ export function parsePricingCsv(content: string): {
 
   for (let i = 1; i < lines.length; i++) {
     const fields = parseCsvLine(lines[i]);
-    const get = (column: (typeof REQUIRED_COLUMNS)[number]) =>
-      (fields[headerIndex.get(column)!] ?? "").trim();
+    const get = (column: string) => {
+      const index = headerIndex.get(column);
+      if (index === undefined) return "";
+      return (fields[index] ?? "").trim();
+    };
 
     rows.push({
       profession_riskclass_id: get("profession_riskclass_id"),
@@ -151,6 +161,7 @@ export function parsePricingCsv(content: string): {
       fixed_adjustment: get("fixed_adjustment"),
       insurance_tax_percentage: get("insurance_tax_percentage"),
       riskclass_name: get("riskclass_name"),
+      internal_name: get("internal_name"),
       __rowNumber: i + 1,
     });
   }

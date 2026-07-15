@@ -12,6 +12,14 @@ modules/premium-calculator/pricing/pricing.csv
 
 Een nieuw bestand vervangt volledig de bestaande dataset. Geen historie, geen incrementele updates.
 
+Exacte bestandsnaam: `pricing.csv` (niet `pricing.csv.csv`).
+
+### Kolommen
+
+Verplicht: `profession_riskclass_id`, `profession_id`, `profession_name`, `product_name`, `base_price`, `percentage_adjustment`, `fixed_adjustment`, `insurance_tax_percentage`, `riskclass_name`.
+
+Optioneel: `internal_name` — wordt door de module bewaard voor andere Alicia D2C-sites; de calculator op zelfverzekerdzzp.nl gebruikt dit veld niet in de UI.
+
 ## Genereren van de catalogus
 
 ```bash

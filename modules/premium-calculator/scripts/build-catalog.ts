@@ -30,7 +30,8 @@ function main() {
 
   const catalog = buildCatalog(result.rules);
 
-  // Drop riskclassName from client payload — internal only
+  // Strip riskclassName from browser payload. Keep internalName for other
+  // Alicia consumers that share this catalog; ZZ UI ignores it.
   const clientCatalog = {
     professions: catalog.professions,
     productNames: catalog.productNames,
@@ -47,6 +48,7 @@ function main() {
             percentageAdjustment,
             fixedAdjustment,
             insuranceTaxPercentage,
+            internalName,
           }) => ({
             professionRiskclassId,
             professionId,
@@ -57,6 +59,7 @@ function main() {
             fixedAdjustment,
             insuranceTaxPercentage,
             riskclassName: "",
+            internalName,
           }),
         ),
       ]),
