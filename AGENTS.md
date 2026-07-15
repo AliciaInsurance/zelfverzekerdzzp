@@ -78,6 +78,9 @@ Los alle fouten op voordat je werk als gereed presenteert. Geen commits tenzij d
 | `src/lib/direct-url.ts` | UTM-links naar Alicia Direct |
 | `src/components/InsurancePageTemplate.tsx` | Productpagina-layout |
 | `src/components/ProductCatalog.tsx` | Filterbare catalogus (client) |
+| `modules/premium-calculator/` | Herbruikbare premiecalculator (CSV + kern + React) |
+| `src/lib/premium-calculator/adapter.ts` | Site-adapter (CTA/UTM naar Alicia Direct) |
+| `src/components/SitePremiumCalculator.tsx` | Website-wrapper voor de calculator |
 
 ## Deployment
 

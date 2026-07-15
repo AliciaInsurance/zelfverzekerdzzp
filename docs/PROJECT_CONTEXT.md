@@ -37,12 +37,14 @@ Geen database, geen CMS, geen externe API's, geen auth.
 ## Architectuur
 
 ```text
+modules/
+  premium-calculator/     # Site-agnostische premiecalculator (CSV, kernlogica, React UI)
 src/
   app/                    # Next.js routes (pages, layout, sitemap, robots)
   components/             # UI-componenten en paginatemplates
     ui/                   # shadcn/ui-primitieven
   content/                # Alle tekstuele content (TypeScript)
-  lib/                    # Utilities (metadata, UTM, JSON-LD, cn)
+  lib/                    # Utilities (metadata, UTM, JSON-LD, cn, calculator-adapter)
 public/                   # Statische assets
 docs/                     # Projectdocumentatie (dit bestand e.d.)
 ```
@@ -51,7 +53,7 @@ docs/                     # Projectdocumentatie (dit bestand e.d.)
 
 - Alle pagina's zijn statisch gegenereerd (SSG).
 - Productpagina's via dynamische route `/verzekeringen/[slug]` met `generateStaticParams()`.
-- Client components alleen voor: `Header`/`MobileNavigation`, `AdviceDemo`, `ProductCatalog`.
+- Client components alleen voor: `Header`/`MobileNavigation`, `SitePremiumCalculator`, `ProductCatalog`.
 
 ### Templates
 
@@ -68,7 +70,8 @@ docs/                     # Projectdocumentatie (dit bestand e.d.)
 
 | Route | Beschrijving |
 |---|---|
-| `/` | Homepage (hero, trust bar, beroepen, featured producten, adviesdemo, FAQ) |
+| `/` | Homepage (hero, trust bar, beroepen, featured producten, premiecalculator, FAQ) |
+| `/premie-berekenen` | Premiecalculator (beroep zoeken → beschikbare producten + indicatieve premie) |
 | `/over-ons` | Over ZelfverzekerdZZP / Alicia |
 | `/disclaimer` | Juridische disclaimer |
 | `/privacy` | Privacyverklaring |
@@ -191,7 +194,7 @@ npm run lint     # ESLint
 | Dynamische `[slug]`-route voor producten | Eén template, schaalbaar naar N producten |
 | Statische generatie | Snel, goedkoop op Vercel, geen server nodig |
 | Centrale UTM-helper | Consistente tracking, eenvoudig aanpasbaar |
-| Geen prijzen op site | Inhoudelijk niet gevalideerd; voorkomt misleiding |
+| Premies alleen via modular calculator | Indicatieve premies uit gevalideerde `pricing.csv`; CTA naar Alicia Direct |
 | "Zakelijke reisverzekering" i.p.v. "Workation" | SEO + klantbegrip; workation als secundaire uitleg |
 | Execution-only taalgebruik | Geen "advies"-CTA's; Alicia is geen adviseur |
 | shadcn/ui handmatig | Geen CLI-afhankelijkheid; minimale set componenten |
